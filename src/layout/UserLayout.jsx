@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
+import "./layout.css";
+import Sidebar from "../components/Sidebar";
 
 const UserLayout = () => {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">User Layout</h1>
-      {<Outlet />}
+      <div className="user-container">
+        <Sidebar />
+        <div className="workarea">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };
