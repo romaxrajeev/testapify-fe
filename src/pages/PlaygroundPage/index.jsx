@@ -1,13 +1,25 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { ReactFlow, Controls, Background } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { nodePlaceChange } from "../../redux/slices/nodeSlice";
 import { addNewEdge, edgePlaceChange } from "../../redux/slices/edgeSlice";
+import ApiNode from "../../components/ApiNode";
+import ValidationNode from "../../components/ValidationNode";
+import ComputationNode from "../../components/ComputationNode";
 
 const PlaygroundPage = () => {
   const nodes = useSelector((state) => state.nodes);
   const edges = useSelector((state) => state.edges);
+
+  const nodeTypes = useMemo(
+    () => ({
+      apiNode: ApiNode,
+      validationNode: ValidationNode,
+      computationNode: ComputationNode,
+    }),
+    []
+  );
 
   const dispatch = useDispatch();
 
@@ -30,6 +42,7 @@ const PlaygroundPage = () => {
         edges={edges}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        nodeTypes={nodeTypes}
         fitView
       >
         <Background />

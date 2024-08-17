@@ -33,6 +33,7 @@ const Sidebar = () => {
         dispatch(
           addNode({
             data: { label: "sample-computation" },
+            type: "computationNode",
           })
         );
         break;
@@ -40,6 +41,7 @@ const Sidebar = () => {
         dispatch(
           addNode({
             data: { label: "sample-api" },
+            type: "apiNode",
           })
         );
         break;
@@ -47,6 +49,7 @@ const Sidebar = () => {
         dispatch(
           addNode({
             data: { label: "sample-validation" },
+            type: "validationNode",
           })
         );
         break;

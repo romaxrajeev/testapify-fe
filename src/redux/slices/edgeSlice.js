@@ -6,7 +6,7 @@ const edgeSlice = createSlice({
   initialState: [],
   reducers: {
     addNewEdge: (state, action) => {
-      return addEdge(action.payload, state);
+      return addEdge({ ...action.payload, animated: true }, state);
     },
     edgePlaceChange: (state, action) => {
       return applyEdgeChanges(action.payload, state);
